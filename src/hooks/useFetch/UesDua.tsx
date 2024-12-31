@@ -1,35 +1,24 @@
-"use client";
+import { getCategoryDua, getSubCategoryDua } from "@/lib/fetch/dua.fetch";
+import { useQuery } from "@tanstack/react-query";
 
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
-import { useToast } from "../use-toast";
-
-export const useCreateProject = () => {
-  const toast = useToast();
-  const router = useRouter();
-
-  const { mutate, isPending, isSuccess, error } = useMutation({
-    mutationFn: (createData: { title: string }) => {
-      return createProject(createData);
+export const useGetcatgoryDua = (categoryId?: string | null) => {
+  return useQuery({
+    queryKey: ["Dua", categoryId],
+    queryFn: () => {
+      if (!categoryId) return [];
+      return getCategoryDua(categoryId) || [];
     },
-    onSuccess: (data) => {
-      if (data?.success) {
-        toast.toast({
-          title: "Success",
-          description: data?.message,
-        });
-
-        router.replace("/create-project/:projectId");
-      }
-    },
-    onError: (error: any) => {
-      toast.toast({
-        variant: "destructive",
-        title: "Error",
-        description: error.data?.message || "Something went wrong",
-      });
-    },
+    enabled: !!categoryId,
   });
+};
 
-  return { createProject: mutate, isPending, isSuccess, error };
+export const useGetSubcatDua = (subcategoryId?: string | null) => {
+  return useQuery({
+    queryKey: ["Dua", subcategoryId],
+    queryFn: () => {
+      if (!subcategoryId) return [];
+      return getSubCategoryDua(subcategoryId) || [];
+    },
+    enabled: !!subcategoryId,
+  });
 };

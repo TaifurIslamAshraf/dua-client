@@ -3,6 +3,7 @@ import Bookmark from "../../public/bookmark.png";
 import Book from "../../public/books 1.png";
 import CategoryIcon from "../../public/category-icon.png";
 import DuaInfo from "../../public/dua-info.png";
+import DuaArrow from "../../public/duaarrow.svg";
 import HomeIcon from "../../public/home 1.png";
 import Logo from "../../public/logo.png";
 import Memorize from "../../public/memorize 1.png";
@@ -22,4 +23,5 @@ export const assests = {
   Support,
   Search,
   CategoryIcon,
+  DuaArrow,
 };

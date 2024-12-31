@@ -14,6 +14,9 @@ export default {
         "primary-forground": "var(--primary-foreground)",
         green: "var(--green)",
       },
+      screens: {
+        "3xl": "1640px",
+      },
     },
   },
   plugins: [require("tailwind-scrollbar")({ nocompatible: true })],

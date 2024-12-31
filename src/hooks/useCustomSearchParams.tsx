@@ -6,7 +6,6 @@ import { useCallback } from "react";
 export const useCustomSearchParams = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams);
 
   const createQueryString = useCallback(
     (name: string, value: string | null) => {

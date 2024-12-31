@@ -22,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${inter.className} antialiased max-w-[1800px] w-full`}>
+      <body
+        className={` ${inter.className} antialiased max-w-[1800px] mx-auto w-full`}
+      >
         <ReactQueryProvider>
           <Container>
             <SidebarContainer>{children}</SidebarContainer>

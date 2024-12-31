@@ -7,14 +7,18 @@ import { useQuery } from "@tanstack/react-query";
 export const useGetAllCategory = () => {
   const { isLoading, data, isSuccess, error } = useQuery({
     queryKey: ["Category"],
-    queryFn: () => getAllCategory(),
+    queryFn: () => getAllCategory() || [],
   });
-  return { category: data, isLoading, isSuccess, error };
+  return { category: data || [], isLoading, isSuccess, error };
 };
+
 export const useGetSubCategory = (categoryId?: string | null) => {
   return useQuery({
     queryKey: ["SubCategory", categoryId],
-    queryFn: () => getSubCategoryByCategoryId(categoryId!),
+    queryFn: () => {
+      if (!categoryId) return [];
+      return getSubCategoryByCategoryId(categoryId) || [];
+    },
     enabled: !!categoryId,
   });
 };
